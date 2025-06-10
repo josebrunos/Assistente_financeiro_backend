@@ -2,6 +2,7 @@
 import { Injectable } from '@nestjs/common';
 import OpenAI from 'openai';
 import * as dotenv from 'dotenv';
+import { LogService } from '../log/log.service';
 
 dotenv.config();
 
@@ -19,6 +20,8 @@ const MAX_HISTORY = 10;
 export class OpenaiService {
   private client = new OpenAI({ baseURL: endpoint, apiKey: token });
 
+  constructor(private readonly logService: LogService) {}
+  
   // Mensagens do chat, incluindo instrucao inicial do assistente
   private messages: Mensagem[] = [
     {
@@ -59,6 +62,9 @@ export class OpenaiService {
     if (!content) {
       throw new Error('A resposta da IA veio vazia ou malformada.');
     }
+
+    // Salvar interacao no banco de dados antes de retornar resposta
+    await this.logService.registrar(userInput, content);
 
     this.messages.push({ role: 'assistant', content });
     this.limitarHistorico();
