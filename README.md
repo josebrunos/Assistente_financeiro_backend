@@ -16,8 +16,15 @@ git clone https://github.com/josebrunos/Assistente_financeiro_backend.git
   ```bash
   npm install
   ```
+### Avisos durante a instalação
+### Ao rodar npm install, você pode ver avisos de vulnerabilidades em pacotes usados pelas dependências do projeto. Esses avisos geralmente são de baixa severidade e não impedem o funcionamento do sistema.
+- ### Para corrigir as vulnerabilidades que não quebram o projeto, execute:
+  ```bash
+  npm audit fix
+  ```
+
 ### 4. Configure a variável de ambiente:
-- #### Crie um arquivo .env na rai do projeto e adicione:
+- #### Crie um arquivo .env na raiz do projeto e adicione:
   ```bash
   GITHUB_TOKEN="seu_github_token_aqui"
   ```
@@ -27,28 +34,26 @@ git clone https://github.com/josebrunos/Assistente_financeiro_backend.git
   npm run start
   ```
 
-### 6. O backend ficará disponível em::
-
+### 6. Rotas da API:
+#### As rotas estão disponíveis localmente em:
 - **URL:** `http://localhost:3000/chat`
-- **Método:** `POST`
-- **Content-Type:** `application/json`
 ---
 
-## Corpo da Requisição (JSON) 
+- ### POST /chat - envia uma mensagem para a IA
+- ### GET /chat/saldo - retornar o saldo atual
+- ### GET /chat/categorias - retorna as categorias identificadas
+- ### DELETE /chat/historico - remove todas as transações do histórico
+---
+
+## Exemplo com curl:
 
 ```json
 {
   "mensagem": "Recebi meu salário de 3000 reais e gastei 800 em mercado"
 }
 ```
-- #### Curl:
+- ### curl:
   ```bash
   curl -X POST http://localhost:3000/chat -H "Content-Type: application/json" -d "{\"mensagem\": \"Recebi meu salário de 3000 reais e gastei 800 em mercado\"}"
   ```
 
-## Resposta da API (JSON)
-```json
-{
-  "resposta": "Resumo financeiro:\n\n- Receita:\n  - Salário: R$ 3.000,00\n\n- Despesas:\n  - Alimentação: R$ 800,00\n\nSaldo mensal: R$ 2.200,00"
-}
-```
