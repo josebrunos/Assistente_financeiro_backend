@@ -1,4 +1,4 @@
-# compiled output
+# Compiled output
 /dist
 /node_modules
 /build
@@ -14,10 +14,12 @@ lerna-debug.log*
 
 # OS
 .DS_Store
+Thumbs.db
 
 # Tests
 /coverage
 /.nyc_output
+junit.xml
 
 # IDEs and editors
 /.idea
@@ -37,6 +39,9 @@ lerna-debug.log*
 
 # dotenv environment variable files
 .env
+.env.development
+.env.test
+.env.production
 .env.development.local
 .env.test.local
 .env.production.local
@@ -55,5 +60,21 @@ pids
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
-# gitignore banco de dados
+# Databases
+*.sqlite
+*.sqlite3
 db.sqlite
+*.db
+
+# Generated assets
+/public/assets/
+/assets/generated/
+
+# Temporary files
+.cache/
+tmp/
+
+# NestJS specific
+/documentation
+
+/generated/prisma

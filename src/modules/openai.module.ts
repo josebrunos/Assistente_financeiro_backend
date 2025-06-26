@@ -1,7 +1,7 @@
 // src/openai/openai.module.ts
 import { Module } from '@nestjs/common';
-import { OpenaiService } from './openai.service';
-import { OpenaiController } from './openai.controller';
+import { OpenaiService } from '../services/openai.service';
+import { OpenaiController } from '../controllers/openai.controller';
 import { LogModule } from '../log/log.module';
 
 @Module({

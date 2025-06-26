@@ -2,7 +2,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Log } from './log.entity';
-import { LogService } from './log.service';
+import { LogService } from '../services/log.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Log])],
